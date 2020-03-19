@@ -28,9 +28,17 @@ class HomeController extends AbstractController
     // qui a le même nom que la "wildcard"
 
     /**
-     * @Route("/accueil/{age}", name="home")
+     * @Route("/", name="home")
      */
-    public function home(Request $request, $age)
+    public function home()
+    {
+        return $this->render('index.html.twig');
+    }
+
+    /**
+     * @Route("/poker/{age}", name="poker")
+     */
+    public function poker(Request $request, $age)
     {
         // je stocke dans une variable tous les parametres de Request
         // à savoir les données de la requête de l'utilisateur
@@ -51,7 +59,7 @@ class HomeController extends AbstractController
 
             // fait une redirection vers la route "error_home", symfony va automatiquement "calculer"
             // l'url de la page
-            return $this->redirectToRoute("home_error");
+            return $this->redirectToRoute("poker_error");
 
         }
 
@@ -64,7 +72,7 @@ class HomeController extends AbstractController
     }
 
     /**
-     * @Route("/home/error", name="home_error")
+     * @Route("/error", name="poker_error")
      */
     public function errorHome()
     {
@@ -76,7 +84,7 @@ class HomeController extends AbstractController
     }
 
     /**
-     * @Route("/twig", name="twig")
+     * @Route("/profil", name="profil")
      */
     public function twig()
     {
@@ -91,11 +99,46 @@ class HomeController extends AbstractController
 
         // j'utilise la méthode render (issue de la classe AbsractController)
         // pour renvoyer un fichier html/twig en Réponse
-        return $this->render('index.html.twig', [
+        return $this->render('profil.html.twig', [
             'name' => $name,
             'firstName' => $firstName,
             'sports' => $sports
         ]);
+    }
+
+
+    /**
+     * @Route("/articles/{id}", name="articles")
+     */
+    public function blog($id)
+    {
+        $articles = [
+            1 => [
+                'title' => 'titre article 1',
+                'content' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+                'categories' => ['politique', 'actualités'],
+                'published' => true
+            ],
+            2 => [
+                'title' => 'titre article 2',
+                'content' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+                'categories' => ['cuisine', 'corona-virus'],
+                'published' => true
+            ],
+            3 => [
+                'title' => 'titre article 3',
+                'content' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+                'categories' => ['monde'],
+                'published' => false
+            ]
+        ];
+
+        $article = $articles[$id];
+
+        return $this->render('articles.html.twig', [
+           'article' => $article
+        ]);
+
     }
 
 }

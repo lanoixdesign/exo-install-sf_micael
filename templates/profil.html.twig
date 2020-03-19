@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <nav>
+        <ul>
+            <li>
+                <a href="{{ path('home') }}">Accueil</a>
+            </li>
+        </ul>
+    </nav>
+
+    <main>
+
+        <p>Mon nom est {{ name }} et mon prénom est {{ firstName|upper }}</p>
+
+        <p>Mes passions sont : </p>
+
+        <ul>
+
+            {{ sports|join(' - ') }}
+            {# pour chaque valeur de la variable "sports" #}
+            {#{% for sport in sports %}
+                #}{# j'affiche la valeur de chaque sport #}{#
+                <li>{{ sport }}</li>
+            {% endfor %}#}
+        </ul>
+    </main>
+
+</body>
+</html>
