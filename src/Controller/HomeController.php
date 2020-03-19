@@ -9,12 +9,13 @@ namespace App\Controller;
 // je fais un "use" vers le namespace (qui correspond au chemin) de la classe "Route"
 // ça correspond à un import ou un require en PHP
 // pour pouvoir utiliser cette classe dans mon code
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 // je créé ma classe HomeController et je la nomme de la même manière que mon fichier
-class HomeController
+class HomeController extends AbstractController
 {
 
     // je créé un commentaire en utilisant la classe Route (précédée d'un "@")
@@ -43,7 +44,9 @@ class HomeController
             $message = '<h1>Vous pouvez accéder à ce site !</h1>';
         // sinon j'affiche un autre message
         } else {
-            $message = '<h1>Cass\' toi pauv\' con !</h1>';
+            // je veux renvoyer vers la page error home
+
+            return $this->redirect('http://exo-install-sf:8888/home/error');
         }
 
         // j'utilise la classe Response du composant HTTP Foundation pour créer une réponse
@@ -52,6 +55,18 @@ class HomeController
         // je retourne la réponse créée
         return $response;
 
+    }
+
+    /**
+     * @Route("/home/error", name="error_home")
+     */
+    public function errorHome()
+    {
+        $message = "vous ne pouvez pas accéder à ce site !";
+
+        $response = new Response($message);
+
+        return $response;
     }
 
 }
