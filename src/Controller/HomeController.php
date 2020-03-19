@@ -46,7 +46,13 @@ class HomeController extends AbstractController
         } else {
             // je veux renvoyer vers la page error home
 
-            return $this->redirect('http://exo-install-sf:8888/home/error');
+            // fait une redirection vers une url "en dur"
+            //return $this->redirect('http://exo-install-sf:8888/home/error');
+
+            // fait une redirection vers la route "error_home", symfony va automatiquement "calculer"
+            // l'url de la page
+            return $this->redirectToRoute("home_error");
+
         }
 
         // j'utilise la classe Response du composant HTTP Foundation pour créer une réponse
@@ -58,7 +64,7 @@ class HomeController extends AbstractController
     }
 
     /**
-     * @Route("/home/error", name="error_home")
+     * @Route("/home/error", name="home_error")
      */
     public function errorHome()
     {
