@@ -80,9 +80,22 @@ class HomeController extends AbstractController
      */
     public function twig()
     {
+
+        $name = 'Robert'; // simulation d'une requête en base de données
+        $firstName = 'David';
+
+        $sports = [
+            'surf',
+            'escalade'
+        ];
+
         // j'utilise la méthode render (issue de la classe AbsractController)
         // pour renvoyer un fichier html/twig en Réponse
-        return $this->render('index.html.twig');
+        return $this->render('index.html.twig', [
+            'name' => $name,
+            'firstName' => $firstName,
+            'sports' => $sports
+        ]);
     }
 
 }

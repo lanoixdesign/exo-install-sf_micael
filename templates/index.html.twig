@@ -1,1 +1,13 @@
 <p>Je suis le template index</p>
+
+<p>Mon nom est {{ name }} et mon prénom est {{ firstName }}</p>
+
+<p>Mes passions sont : </p>
+
+<ul>
+    {# pour chaque valeur de la variable "sports" #}
+    {% for sport in sports %}
+        {# j'affiche la valeur de chaque sport #}
+        <li>{{ sport }}</li>
+    {% endfor %}
+</ul>
