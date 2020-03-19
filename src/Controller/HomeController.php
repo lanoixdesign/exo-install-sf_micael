@@ -28,7 +28,7 @@ class HomeController extends AbstractController
     // qui a le même nom que la "wildcard"
 
     /**
-     * @Route("/{age}", name="home")
+     * @Route("/accueil/{age}", name="home")
      */
     public function home(Request $request, $age)
     {
@@ -68,11 +68,21 @@ class HomeController extends AbstractController
      */
     public function errorHome()
     {
-        $message = "vous ne pouvez pas accéder à ce site !";
+        $message = "<h1>vous ne pouvez pas accéder à ce site !</h1>";
 
         $response = new Response($message);
 
         return $response;
+    }
+
+    /**
+     * @Route("/twig", name="twig")
+     */
+    public function twig()
+    {
+        // j'utilise la méthode render (issue de la classe AbsractController)
+        // pour renvoyer un fichier html/twig en Réponse
+        return $this->render('index.html.twig');
     }
 
 }
