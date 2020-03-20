@@ -1,5 +1,10 @@
-{% include 'common/_header.html.twig' %}
+{% extends 'base.html.twig' %}
 
+{% block title %}
+    Page du profil
+{% endblock %}
+
+{% block content %}
     <main>
 
         <p>Mon nom est {{ name }} et mon prénom est {{ firstName|upper }}</p>
@@ -17,4 +22,4 @@
         </ul>
     </main>
 
-{% include 'common/_footer.html.twig' %}
+{% endblock %}

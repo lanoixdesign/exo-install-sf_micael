@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="4885aaa2-a3e7-468a-a030-8575db5e55a1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/articles.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/articles.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/profil.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/profil.html.twig" afterDir="false" />
     </list>
@@ -76,7 +75,7 @@
       <updated>1584536551590</updated>
       <workItem from="1584536554646" duration="10330000" />
       <workItem from="1584607267806" duration="13455000" />
-      <workItem from="1584694513453" duration="2535000" />
+      <workItem from="1584694513453" duration="3290000" />
     </task>
     <servers />
   </component>
