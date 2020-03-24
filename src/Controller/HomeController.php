@@ -111,4 +111,42 @@ class HomeController extends AbstractController
 
     }
 
+
+    /**
+     * @Route("/book/update/{id}", name="book_update")
+     */
+    public function updateBook(
+        BookRepository $bookRepository,
+        EntityManagerInterface $entityManager,
+        $id
+    )
+    {
+
+        // récupérer un livre en bdd (avec le book repository et un id de livre)
+        $book = $bookRepository->find($id);
+
+        // avec l'entité récupérée, on utilise les setters pour modifier les champs qu'on veut modifier
+        $book->setTitle('titre modifié !');
+
+        //on re-enregistre le livre en bdd
+        $entityManager->persist($book);
+        $entityManager->flush();
+
+        return new Response('le livre a bien été modifié !');
+    }
+
+    /**
+     * @Route("/book/search", name="book_search")
+     */
+    public function searchByResume(BookRepository $bookRepository)
+    {
+
+        // j'utilise le bookRepository pour appeler ma méthode "getByWordInResume()"
+        // le bookRepository permet, en plus des méthodes find() etc par défaut,
+        // de créer des méthodes plus spécifiques de SELECT de données en bdd
+        $books = $bookRepository->getByWordInResume();
+
+        dump($books); die;
+    }
+
 }
