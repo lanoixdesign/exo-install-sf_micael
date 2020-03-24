@@ -59,16 +59,18 @@ class HomeController extends AbstractController
     /**
      * @Route("/book/insert", name="book_insert")
      */
-    public function insertBook(EntityManagerInterface $entityManager)
+    public function insertBook(EntityManagerInterface $entityManager, Request $request)
     {
 
         // Pour créer un enregistrement de Book en bdd, j'utilise une instance de l'entité Book
         // Doctrine va faire le lien et transformer mon entité en nouvel enregistrement
         $book = new Book();
 
+        $title = $request->query->get('title');
+
         // j'utilise les setters de mon entité pour donner les valeurs à chaque propriétés (donc à chaque
         // colonne en BDD)
-        $book->setTitle('titre depuis le controleur');
+        $book->setTitle($title);
         $book->setAuthor('JPP');
         $book->setNbPages(200);
         $book->setResume('terif eoirfrnv ieuuirnà');
@@ -81,6 +83,27 @@ class HomeController extends AbstractController
         $entityManager->flush();
 
         return new Response('livre enregistré');
+
+    }
+
+    /**
+     * @Route("/book/delete", name="book_delete")
+     */
+    public function deleteBook(BookRepository $bookRepository, EntityManagerInterface $entityManager)
+    {
+
+        // Avant de supprimer un élément en bdd, je récupère cet élément
+        // qui sera une entité
+        // et je le stocke dans une variable
+        $book = $bookRepository->find(1);
+
+        // j'utilise l'entityManager pour supprimer mon entité
+        $entityManager->remove($book);
+
+        // je "valide" la suppression en bdd
+        $entityManager->flush();
+
+        return new Response('livre supprimé');
 
     }
 
