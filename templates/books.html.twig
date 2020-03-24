@@ -1,3 +1,5 @@
 {% for book in books %}
-    <p>{{ book.title }}</p>
+    <a href="{{ path('book', {'id' : book.id}) }}">
+        <p>{{ book.title }}</p>
+    </a>
 {% endfor %}
