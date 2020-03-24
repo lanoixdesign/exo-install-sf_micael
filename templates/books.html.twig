@@ -1,5 +1,15 @@
 {% for book in books %}
-    <a href="{{ path('book', {'id' : book.id}) }}">
-        <p>{{ book.title }}</p>
+    <h1>Mon livre : </h1>
+    <div>
+        <p>Titre : {{ book.title }}</p>
+        <p>Auteur : {{ book.author }}</p>
+        <p>Résumé : {{ book.resume }}</p>
+        <p>Nombre de pages : {{ book.nbPages }}</p>
+    </div>
+    <a href="{{ path('book_show', {'id' : book.id}) }}">
+        Voir le livre
+    </a>
+    <a href="{{ path('book_delete', {'id' : book.id}) }}">
+        Supprimer le livre
     </a>
 {% endfor %}

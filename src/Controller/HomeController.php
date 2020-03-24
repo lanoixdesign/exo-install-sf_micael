@@ -87,15 +87,19 @@ class HomeController extends AbstractController
     }
 
     /**
-     * @Route("/book/delete", name="book_delete")
+     * @Route("/book/delete/{id}", name="book_delete")
      */
-    public function deleteBook(BookRepository $bookRepository, EntityManagerInterface $entityManager)
+    public function deleteBook(
+        BookRepository $bookRepository,
+        EntityManagerInterface $entityManager,
+        $id
+    )
     {
 
         // Avant de supprimer un élément en bdd, je récupère cet élément
         // qui sera une entité
         // et je le stocke dans une variable
-        $book = $bookRepository->find(1);
+        $book = $bookRepository->find($id);
 
         // j'utilise l'entityManager pour supprimer mon entité
         $entityManager->remove($book);
@@ -103,7 +107,7 @@ class HomeController extends AbstractController
         // je "valide" la suppression en bdd
         $entityManager->flush();
 
-        return new Response('livre supprimé');
+        return $this->redirectToRoute('book_list');
 
     }
 
