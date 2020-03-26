@@ -1,0 +1,18 @@
+{% for author in authors %}
+    <article>
+
+        <p>{{ author.firstName }} {{ author.name }}</p>
+        <p>{{ author.biography }}</p>
+        <p>Naissance: {{ author.birthDate| date('d-m-Y') }}</p>
+
+        {% if author.deathDate %}
+            <p>Mort: {{ author.deathDate| date('d-m-Y') }}</p>
+        {% endif %}
+
+        <a href="{{ path('author_show', {'id': author.id}) }}">Voir l'auteur</a>
+
+        <br/>
+        ____
+
+    </article>
+{% endfor %}
