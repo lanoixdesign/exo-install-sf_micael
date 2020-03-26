@@ -3,8 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="4885aaa2-a3e7-468a-a030-8575db5e55a1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/BookRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/BookRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Admin/BookController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/book.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/book/book.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/bookDelete.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/book/delete.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/books.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/book/books.html.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -17,6 +19,13 @@
     <execution>
       <executable />
     </execution>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Sf Controller" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -39,7 +48,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/book" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -51,7 +60,14 @@
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/templates/admin" />
+      <recent name="$PROJECT_DIR$/src/Controller/Admin" />
+      <recent name="$PROJECT_DIR$/templates/book" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/templates/book" />
+      <recent name="$PROJECT_DIR$/templates/author" />
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
@@ -82,7 +98,9 @@
       <workItem from="1584694513453" duration="3290000" />
       <workItem from="1584953310857" duration="8096000" />
       <workItem from="1585041387452" duration="5904000" />
-      <workItem from="1585060381759" duration="2142000" />
+      <workItem from="1585060381759" duration="2613000" />
+      <workItem from="1585145422704" duration="832000" />
+      <workItem from="1585226382519" duration="2841000" />
     </task>
     <servers />
   </component>

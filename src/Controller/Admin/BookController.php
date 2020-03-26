@@ -4,7 +4,7 @@
 // (en gardant en tête que "App" = "src")
 // et qui permet à Symfony d'"autoloader" ma classe
 // sans que j'ai besoin de faire d'import ou de require à la main
-namespace App\Controller;
+namespace App\Controller\Admin;
 
 // je fais un "use" vers le namespace (qui correspond au chemin) de la classe "Route"
 // ça correspond à un import ou un require en PHP
@@ -18,11 +18,11 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 // je créé ma classe HomeController et je la nomme de la même manière que mon fichier
-class HomeController extends AbstractController
+class BookController extends AbstractController
 {
 
     /**
-     * @Route("/books", name="book_list")
+     * @Route("admin/books", name="admin_book_list")
      *
      * on utilise l'"autowire" de Symfony pour demander à Symfony
      * d'instancier la classe BookRepository dans la variable $bookRepository.
@@ -37,27 +37,27 @@ class HomeController extends AbstractController
 
         //$book = $bookRepository->find(1);
 
-        return $this->render('books.html.twig', [
+        return $this->render('admin/book/books.html.twig', [
            'books' => $books
         ]);
 
     }
 
     /**
-     * @Route("/book/show/{id}", name="book_show")
+     * @Route("admin/book/show/{id}", name="admin_book_show")
      */
     public function book($id, BookRepository $bookRepository)
     {
         $book = $bookRepository->find($id);
 
-        return $this->render('book.html.twig', [
+        return $this->render('admin/book/book.html.twig', [
             'book' => $book
         ]);
     }
 
 
     /**
-     * @Route("/book/insert", name="book_insert")
+     * @Route("admin/book/insert", name="admin_book_insert")
      */
     public function insertBook(EntityManagerInterface $entityManager, Request $request)
     {
@@ -82,12 +82,14 @@ class HomeController extends AbstractController
         // j'utilise la méthode flush pour enregistrer en bdd (execute la requête SQL)
         $entityManager->flush();
 
-        return new Response('livre enregistré');
+        return $this->render('admin/book/insert.html.twig', [
+           'book' => $book
+        ]);
 
     }
 
     /**
-     * @Route("/book/delete/{id}", name="book_delete")
+     * @Route("admin/book/delete/{id}", name="admin_book_delete")
      */
     public function deleteBook(
         BookRepository $bookRepository,
@@ -107,13 +109,15 @@ class HomeController extends AbstractController
         // je "valide" la suppression en bdd
         $entityManager->flush();
 
-        return $this->redirectToRoute('book_list');
+        return $this->render('admin/book/delete.html.twig', [
+            'book' => $book
+        ]);
 
     }
 
 
     /**
-     * @Route("/book/update/{id}", name="book_update")
+     * @Route("admin/book/update/{id}", name="admin_book_update")
      */
     public function updateBook(
         BookRepository $bookRepository,
@@ -132,11 +136,13 @@ class HomeController extends AbstractController
         $entityManager->persist($book);
         $entityManager->flush();
 
-        return new Response('le livre a bien été modifié !');
+        return $this->render('admin/book/update.html.twig', [
+            'book' => $book
+        ]);
     }
 
     /**
-     * @Route("/book/search", name="book_search")
+     * @Route("admin/book/search", name="admin_book_search")
      */
     public function searchByResume(BookRepository $bookRepository)
     {

@@ -6,10 +6,13 @@
         <p>Résumé : {{ book.resume }}</p>
         <p>Nombre de pages : {{ book.nbPages }}</p>
     </div>
-    <a href="{{ path('book_show', {'id' : book.id}) }}">
+    <a href="{{ path('admin_book_show', {'id' : book.id}) }}">
         Voir le livre
     </a>
-    <a href="{{ path('book_delete', {'id' : book.id}) }}">
+    <a href="{{ path('admin_book_delete', {'id' : book.id}) }}">
         Supprimer le livre
+    </a>
+    <a href="{{ path('admin_book_update', {'id' : book.id}) }}">
+        Modifier le livre
     </a>
 {% endfor %}
