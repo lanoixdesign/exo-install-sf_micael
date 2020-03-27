@@ -34,6 +34,12 @@ class Book
 
     /**
      * @ORM\ManyToOne(targetEntity="Author", inversedBy="books")
+     *
+     * Je créé une relation vers les auteurs. Le manyToOne va créer
+     * dans la table book une colonne author_id
+     *
+     * Si je veux pouvoir récupérer aussi du coté des Auteurs tous les livres,
+     * il faut que j'ajoute le 'inversedBy'
      */
     private $author;
 

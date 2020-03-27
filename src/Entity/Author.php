@@ -43,6 +43,12 @@ class Author
 
     /**
      * @ORM\OneToMany(targetEntity="Book", mappedBy="author")
+     *
+     * Je viens faire la relation inverse du ManyToOne, c'est à dire le OneToMany
+     * Pour pouvoir récupérer pour chaque auteur tous les livre
+     *
+     * 'mappedBy' est obligatoire, et il faut renseigner ici la propriété qui, dans l'entité Book,
+     * appelle l'entité Auteur
      */
     private $books;
 

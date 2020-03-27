@@ -12,6 +12,9 @@
         <a href="{{ path('author_show', {'id': author.id}) }}">Voir l'auteur</a>
 
         <p>Livres : </p>
+        {# Pour chaque livre reliés à l'auteur, j'affiche le titre du livre.
+            La propriété books d'un author contient un array avec tous les livres
+         #}
         {% for book in author.books %}
             <p>{{ book.title }}</p>
         {% endfor %}
