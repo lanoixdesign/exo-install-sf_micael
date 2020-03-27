@@ -71,7 +71,6 @@ class BookController extends AbstractController
         // j'utilise les setters de mon entité pour donner les valeurs à chaque propriétés (donc à chaque
         // colonne en BDD)
         $book->setTitle($title);
-        $book->setAuthor('JPP');
         $book->setNbPages(200);
         $book->setResume('terif eoirfrnv ieuuirnà');
 
