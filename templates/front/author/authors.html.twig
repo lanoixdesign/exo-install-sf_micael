@@ -11,6 +11,11 @@
 
         <a href="{{ path('author_show', {'id': author.id}) }}">Voir l'auteur</a>
 
+        <p>Livres : </p>
+        {% for book in author.books %}
+            <p>{{ book.title }}</p>
+        {% endfor %}
+
         <br/>
         ____
 
