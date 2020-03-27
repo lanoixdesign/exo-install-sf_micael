@@ -10,6 +10,7 @@ namespace App\Controller\Admin;
 // ça correspond à un import ou un require en PHP
 // pour pouvoir utiliser cette classe dans mon code
 use App\Entity\Book;
+use App\Repository\AuthorRepository;
 use App\Repository\BookRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -59,7 +60,11 @@ class BookController extends AbstractController
     /**
      * @Route("admin/book/insert", name="admin_book_insert")
      */
-    public function insertBook(EntityManagerInterface $entityManager, Request $request)
+    public function insertBook(
+        EntityManagerInterface $entityManager,
+        Request $request,
+        AuthorRepository $authorRepository
+    )
     {
 
         // Pour créer un enregistrement de Book en bdd, j'utilise une instance de l'entité Book
@@ -71,6 +76,13 @@ class BookController extends AbstractController
         // j'utilise les setters de mon entité pour donner les valeurs à chaque propriétés (donc à chaque
         // colonne en BDD)
         $book->setTitle($title);
+
+        // je récupère un auteur en BDD grâce à l'authorRepository
+        $author = $authorRepository->find(4);
+
+        // Je viens relier l'auteur récupéré au livre que je suis en train de créer
+        $book->setAuthor($author);
+
         $book->setNbPages(200);
         $book->setResume('terif eoirfrnv ieuuirnà');
 
