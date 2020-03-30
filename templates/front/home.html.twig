@@ -5,9 +5,14 @@
 {% for book in books %}
     <article>
         <h3>Titre : {{ book.title }}</h3>
-        <p>Auteur relié : {{ book.author.firstName }} {{ book.author.name }} </p>
+
         <p>Résumé : {{ book.resume }}</p>
         <p>Nombre de pages : {{ book.nbPages }}</p>
+
+        {% if book.author %}
+             <p>Auteur relié : {{ book.author.firstName }} {{ book.author.name }} </p>
+        {% endif %}
+
     </article>
     <br/>
 {% endfor %}

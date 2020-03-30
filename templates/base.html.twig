@@ -1,0 +1,60 @@
+
+
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    {% block heade %}
+        <meta charset="UTF-8">
+        <title>Title</title>
+
+        <link  type="text/css" rel="stylesheet" href="{{ asset('css/style.css') }}">
+    {% endblock %}
+</head>
+<body>
+<header>
+    {% block header %}
+        <div class="logo ">
+            <img class="img-fluid" src="{{ asset('img/logo_google.png') }}" alt="logo" width="850" height="300"></div>
+        <nav>
+            <ul>
+                <li><a href="{{ path('admin_accueil') }}">Accueil</a></li>
+                <li><a href="{{ path('admin_auteurs') }}">Auteurs</a></li>
+                <li><a href="{{ path('admin_insert_auteur') }}">Insérer Auteur</a></li>
+            </ul>
+        </nav>
+        <div class="search">
+            <form action="{{ path('admin_book_search') }}" method="get">
+                <label for="word"><strong>Recherchez-vous un livre ? </strong></label>
+                <input type="text" name="word" placeholder="Votre recherche">
+                <input type="submit">
+
+            </form>
+        </div>
+
+        <div class="search">
+            <form action="{{ path('admin_search_auteur') }}" method="get">
+                <label for="wordname"><strong>Ou un auteur ? </strong></label>
+                <input type="text" name="wordname" placeholder="Votre recherche">
+                <input type="submit">
+
+            </form>
+        </div>
+    {% endblock %}
+</header>
+
+
+<main>
+
+
+    <section>
+        {% block section2 %}
+
+        {% endblock %}
+    </section>
+</main>
+<div id="footer">
+    {% block footer %}
+        &copy; Copyright 2020 by <a href="#!">Micaël L.</a>.
+    {% endblock %}
+</div>
+</body>

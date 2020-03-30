@@ -10,6 +10,7 @@ namespace App\Controller\Admin;
 // ça correspond à un import ou un require en PHP
 // pour pouvoir utiliser cette classe dans mon code
 use App\Entity\Book;
+use App\Form\BookType;
 use App\Repository\AuthorRepository;
 use App\Repository\BookRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -67,34 +68,20 @@ class BookController extends AbstractController
     )
     {
 
-        // Pour créer un enregistrement de Book en bdd, j'utilise une instance de l'entité Book
-        // Doctrine va faire le lien et transformer mon entité en nouvel enregistrement
-        $book = new Book();
+        // 1 : En ligne de commandes, créer le BookType (le gabarit de formulaire)
+        // 2 : dans le contrôleur, générer le formulaire avec $this->createView
+        // 3 : afficher dans Twig le formulaire avec la fonction form
 
-        $title = $request->query->get('title');
+        // J'ai généré avec symfony un gabarit de formulaire (BookType)
+        // qui contient déjà tous les inputs à créer en HTML
+        // Je vais pouvoir utiliser ce gabarit de formulaire pour générer mon
+        // formulaire HTML (donc tous mes champs inputs etc)
 
-        // j'utilise les setters de mon entité pour donner les valeurs à chaque propriétés (donc à chaque
-        // colonne en BDD)
-        $book->setTitle($title);
 
-        // je récupère un auteur en BDD grâce à l'authorRepository
-        $author = $authorRepository->find(4);
-
-        // Je viens relier l'auteur récupéré au livre que je suis en train de créer
-        $book->setAuthor($author);
-
-        $book->setNbPages(200);
-        $book->setResume('terif eoirfrnv ieuuirnà');
-
-        // j'utilise l'EntityManager avec la méthode persist pour sauvegarder mon entité (similaire à un commit
-        // Attention ça n'enregistre pas encore en BDD
-        $entityManager->persist($book);
-
-        // j'utilise la méthode flush pour enregistrer en bdd (execute la requête SQL)
-        $entityManager->flush();
+        $formBook = $this->createForm(BookType::class);
 
         return $this->render('admin/book/insert.html.twig', [
-           'book' => $book
+           'formBook' => $formBook->createView()
         ]);
 
     }

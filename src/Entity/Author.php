@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -42,15 +44,16 @@ class Author
     private $deathDate;
 
     /**
-     * @ORM\OneToMany(targetEntity="Book", mappedBy="author")
-     *
-     * Je viens faire la relation inverse du ManyToOne, c'est à dire le OneToMany
-     * Pour pouvoir récupérer pour chaque auteur tous les livre
-     *
-     * 'mappedBy' est obligatoire, et il faut renseigner ici la propriété qui, dans l'entité Book,
-     * appelle l'entité Auteur
+     * @ORM\OneToMany(targetEntity="App\Entity\Book", mappedBy="author")
      */
     private $books;
+
+    public function __construct()
+    {
+        $this->books = new ArrayCollection();
+    }
+
+
 
     public function getId(): ?int
     {
@@ -118,19 +121,36 @@ class Author
     }
 
     /**
-     * @return mixed
+     * @return Collection|Book[]
      */
-    public function getBooks()
+    public function getBooks(): Collection
     {
         return $this->books;
     }
 
-    /**
-     * @param mixed $books
-     */
-    public function setBooks( $books ): void
+    public function addBook(Book $book): self
     {
-        $this->books = $books;
+        if (!$this->books->contains($book)) {
+            $this->books[] = $book;
+            $book->setAuthor($this);
+        }
+
+        return $this;
     }
+
+    public function removeBook(Book $book): self
+    {
+        if ($this->books->contains($book)) {
+            $this->books->removeElement($book);
+            // set the owning side to null (unless already changed)
+            if ($book->getAuthor() === $this) {
+                $book->setAuthor(null);
+            }
+        }
+
+        return $this;
+    }
+
+
 
 }
