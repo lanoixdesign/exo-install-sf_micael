@@ -132,6 +132,7 @@ class BookController extends AbstractController
     public function updateBook(
         BookRepository $bookRepository,
         EntityManagerInterface $entityManager,
+        Request $request,
         $id
     )
     {
@@ -139,15 +140,24 @@ class BookController extends AbstractController
         // récupérer un livre en bdd (avec le book repository et un id de livre)
         $book = $bookRepository->find($id);
 
-        // avec l'entité récupérée, on utilise les setters pour modifier les champs qu'on veut modifier
-        $book->setTitle('titre modifié !');
+        // je crée mon formulaire et le je lie à mon book selectionné
+        $formBook = $this->createForm(BookType::class, $book);
 
-        //on re-enregistre le livre en bdd
-        $entityManager->persist($book);
-        $entityManager->flush();
+        // je demande à mon formulaire $formBook de gérer les données
+        // de la requete POST
+        $formBook->handleRequest($request);
 
+        if ($formBook->isSubmitted() && $formBook->isValid()){
+
+            //on re-enregistre le livre en bdd
+            $entityManager->persist($book);
+            $entityManager->flush();
+        }
+
+
+        // on affiche le rendu dans le fichier twig
         return $this->render('admin/book/update.html.twig', [
-            'book' => $book
+            'formBook' => $formBook->createView()
         ]);
     }
 

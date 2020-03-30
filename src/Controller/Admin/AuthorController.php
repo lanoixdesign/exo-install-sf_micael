@@ -7,7 +7,6 @@ use App\Form\AuthorType;
 use App\Repository\AuthorRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -47,7 +46,7 @@ class AuthorController extends AbstractController
         // Je crée un nouveau author, pour le lier à mon formulaire
         $author = new Author();
 
-        // je crée mon formulaire et le je lie à mon nouveau livre
+        // je crée mon formulaire et le je lie à mon nouveau author
         $formAuthor = $this->createForm(AuthorType::class, $author);
 
         // je demande à mon formulaire $formAuthor de gérer les données
@@ -92,19 +91,28 @@ class AuthorController extends AbstractController
     public function updateAuthor(
         AuthorRepository $authorRepository,
         EntityManagerInterface $entityManager,
+        Request $request,
         $id
     )
     {
         $author = $authorRepository->find($id);
 
-        $author->setFirstName('newFirstName');
+        // je crée mon formulaire et le je lie à mon author selectionné
+        $formAuthor = $this->createForm(AuthorType::class, $author);
 
-        $entityManager->persist($author);
+        // je demande à mon formulaire $formAuthor de gérer les données
+        // de la requete POST
+        $formAuthor->handleRequest($request);
 
-        $entityManager->flush();
+        if ($formAuthor->isSubmitted() && $formAuthor->isValid()) {
 
+            // je persiste le book
+            $entityManager->persist($author);
+            $entityManager->flush();
+
+        }
         return $this->render('admin/author/update.html.twig', [
-            'author' => $author
+            'formAuthor' => $formAuthor->createView()
         ]);
     }
 
