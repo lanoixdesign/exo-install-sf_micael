@@ -61,11 +61,8 @@ class BookController extends AbstractController
     /**
      * @Route("admin/book/insert", name="admin_book_insert")
      */
-    public function insertBook(
-        EntityManagerInterface $entityManager,
-        Request $request,
-        AuthorRepository $authorRepository
-    )
+    public function insertBook(Request $request, EntityManagerInterface $entityManager)
+
     {
 
         // 1 : En ligne de commandes, créer le BookType (le gabarit de formulaire)
@@ -77,9 +74,24 @@ class BookController extends AbstractController
         // Je vais pouvoir utiliser ce gabarit de formulaire pour générer mon
         // formulaire HTML (donc tous mes champs inputs etc)
 
+        // Je crée un nouveau livre, pour le lier à mon formulaire
+        $book = new Book();
 
-        $formBook = $this->createForm(BookType::class);
+        // je crée mon formulaire et le je lie à mon nouveau livre
+        $formBook = $this->createForm(BookType::class, $book);
 
+        // je de mande à mon formulaire $formBook de gérer les données
+        // de la requete POST
+        $formBook->handleRequest($request);
+
+        if ($formBook->isSubmitted() && $formBook->isValid()){
+
+            // je persiste le book
+            $entityManager->persist($book);
+            $entityManager->flush();
+        }
+
+        //j'affiche le rendu de mon formulaire créé sur ma page twig
         return $this->render('admin/book/insert.html.twig', [
            'formBook' => $formBook->createView()
         ]);

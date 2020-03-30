@@ -3,9 +3,12 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Author;
+use App\Form\AuthorType;
 use App\Repository\AuthorRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 class AuthorController extends AbstractController
@@ -39,21 +42,28 @@ class AuthorController extends AbstractController
     /**
      * @Route("admin/author/insert", name="admin_author_insert")
      */
-    public function authorInsert(EntityManagerInterface $entityManager)
+    public function authorInsert(Request $request, EntityManagerInterface $entityManager)
     {
+        // Je crée un nouveau author, pour le lier à mon formulaire
         $author = new Author();
 
-        $author->setFirstName("Bernard");
-        $author->setName("Werber");
-        $author->setBiography("Les fourmis blablab");
-        $author->setBirthDate(new \DateTime('1879-03-14'));
+        // je crée mon formulaire et le je lie à mon nouveau livre
+        $formAuthor = $this->createForm(AuthorType::class, $author);
 
-        $entityManager->persist($author);
+        // je demande à mon formulaire $formAuthor de gérer les données
+        // de la requete POST
+        $formAuthor->handleRequest($request);
 
-        $entityManager->flush();
+        if ($formAuthor->isSubmitted() && $formAuthor->isValid()){
+
+            // je persiste le book
+            $entityManager->persist($author);
+            $entityManager->flush();
+
+        }
 
         return $this->render('admin/author/insert.html.twig', [
-            'author' => $author
+            'formAuthor' => $formAuthor->createView()
         ]);
     }
 
