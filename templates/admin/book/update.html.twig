@@ -1,1 +1,31 @@
-{{ form(formBook) }}
+{#{{ form(formBook) }}#}
+{% extends "base.html.twig" %}
+
+{% block section2 %}
+<div class="formBook">
+{{ form_start(formBook) }}
+
+    {{ form_label(formBook.title) }}
+        <div class="title">
+            {{ form_widget(formBook.title) }}
+        </div>
+
+
+    {{ form_label(formBook.resume) }}
+        <div class="inputResume">
+            {{ form_widget(formBook.resume) }}
+        </div>
+
+    {{ form_label(formBook.nbPages) }}
+        <div class="inputNbpages">
+            {{ form_widget(formBook.nbPages) }}
+        </div>
+
+
+    {{ form_widget(formBook.submit) }}
+
+
+
+{{ form_end(formBook) }}
+</div>
+{% endblock %}

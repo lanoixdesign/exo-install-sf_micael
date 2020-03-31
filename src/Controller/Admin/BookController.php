@@ -86,6 +86,9 @@ class BookController extends AbstractController
 
         if ($formBook->isSubmitted() && $formBook->isValid()){
 
+            // j'affiche un mesage flash pour indiquer à l'utilisateur que l'action est validé
+            $this->addFlash('success', 'Le livre a bien été ajouté');
+
             // je persiste le book
             $entityManager->persist($book);
             $entityManager->flush();
@@ -148,6 +151,9 @@ class BookController extends AbstractController
         $formBook->handleRequest($request);
 
         if ($formBook->isSubmitted() && $formBook->isValid()){
+
+            // j'affiche un mesage flash pour indiquer à l'utilisateur que l'action est validé
+            $this->addFlash('success', 'Le livre a bien été modifié');
 
             //on re-enregistre le livre en bdd
             $entityManager->persist($book);

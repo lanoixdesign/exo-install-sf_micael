@@ -1,7 +1,7 @@
 *{
-    border: solid 1px  black;
+    /*border: solid 1px  black;*/
 }
-body{
+body, *{
     margin: 0;
     padding: 0;
 }
@@ -15,11 +15,13 @@ header{
     padding-right: 40px;
 }
 footer{
+    width: 100%;
     display: flex;
-    justify-content: space-around;
     align-items: center;
     position: absolute;
     bottom: 0;
+    height: 40px;
+    background-color: #f1f2f3;
 }
 
 a{
@@ -131,4 +133,20 @@ main{
 
 }
 
+/*--------------------------CSS FORM-------------------------------*/
 
+
+.formAuthor, .formBook{
+    display: flex;
+    background-color: #f1f2f3;
+    padding: 5px;
+
+}
+.formAuthor, .formBook, div{
+    margin-bottom: 30px;
+    border-radius: 5px;
+}
+.formAuthor, .formBook, label{
+    font-weight: bold;
+
+}

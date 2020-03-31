@@ -1,1 +1,33 @@
-{{ form(formBook) }}
+
+{% extends "base.html.twig" %}
+
+{% block section2 %}
+
+<div class="formBook">
+    {{ form_start(formBook) }}
+
+    {{ form_label(formBook.title) }}
+        {{ form_widget(formBook.title, {'attr' : {'class' : 'inputTitle d-flex'} }) }}
+        {{ form_errors(formBook.title) }}
+
+
+
+    {{ form_label(formBook.resume) }}
+        {{ form_widget(formBook.resume,  {'attr' : {'class' : 'inputResume d-flex'} }) }}
+        {{ form_errors(formBook.resume) }}
+
+
+    {{ form_label(formBook.nbPages) }}
+        {{ form_widget(formBook.nbPages,  {'attr' : {'class' : 'inputnbPages d-flex'} })  }}
+        {{ form_errors(formBook.nbPages) }}
+
+
+
+    {{ form_widget(formBook.submit) }}
+
+
+
+    {{ form_end(formBook) }}
+</div>
+
+{% endblock %}

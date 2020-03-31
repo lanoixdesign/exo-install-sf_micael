@@ -8,53 +8,49 @@
         <title>Title</title>
 
         <link  type="text/css" rel="stylesheet" href="{{ asset('css/style.css') }}">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     {% endblock %}
 </head>
 <body>
-<header>
-    {% block header %}
-        <div class="logo ">
-            <img class="img-fluid" src="{{ asset('img/logo_google.png') }}" alt="logo" width="850" height="300"></div>
-        <nav>
-            <ul>
-                <li><a href="{{ path('admin_accueil') }}">Accueil</a></li>
-                <li><a href="{{ path('admin_auteurs') }}">Auteurs</a></li>
-                <li><a href="{{ path('admin_insert_auteur') }}">Insérer Auteur</a></li>
-            </ul>
-        </nav>
-        <div class="search">
-            <form action="{{ path('admin_book_search') }}" method="get">
-                <label for="word"><strong>Recherchez-vous un livre ? </strong></label>
-                <input type="text" name="word" placeholder="Votre recherche">
-                <input type="submit">
+    <header>
+        {% block header %}
 
-            </form>
-        </div>
-
-        <div class="search">
-            <form action="{{ path('admin_search_auteur') }}" method="get">
-                <label for="wordname"><strong>Ou un auteur ? </strong></label>
-                <input type="text" name="wordname" placeholder="Votre recherche">
-                <input type="submit">
-
-            </form>
-        </div>
-    {% endblock %}
-</header>
-
-
-<main>
-
-
-    <section>
-        {% block section2 %}
+            <nav>
+                <ul>
+                    <li>Author/Update</li>
+                    <li>Author>Insert</li>
+                    <span>|</span>
+                    <li>Book/Update</li>
+                    <li>Book>Insert</li>
+                </ul>
+            </nav>
 
         {% endblock %}
-    </section>
-</main>
-<div id="footer">
-    {% block footer %}
-        &copy; Copyright 2020 by <a href="#!">Micaël L.</a>.
-    {% endblock %}
-</div>
+    </header>
+
+
+    <main>
+        {# J'affiche tous les messages flashes enregistré #}
+        {% for message in app.flashes('success') %}
+
+            <div>
+                {{ message }}
+            </div>
+
+        {% endfor %}
+        <section>
+            {% block section2 %}
+
+            {% endblock %}
+        </section>
+
+    </main>
+
 </body>
+
+<footer>
+    {% block footer %}
+        <div> &copy; Copyright 2020 by <a href="#!">Micaël L.</a>.</div>
+    {% endblock %}
+</footer>
+</html>

@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4885aaa2-a3e7-468a-a030-8575db5e55a1" name="Default Changelist" comment="">
+    <list default="true" id="4885aaa2-a3e7-468a-a030-8575db5e55a1" name="Default Changelist" comment="Ajout formAuthor">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/Admin/AuthorController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Admin/AuthorController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/Admin/BookController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Admin/BookController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Book.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Book.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/author/insert.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/author/insert.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/admin/author/update.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/author/update.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/book/insert.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/book/insert.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/admin/book/update.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/book/update.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,7 +103,8 @@
       <workItem from="1585312881129" duration="4989000" />
       <workItem from="1585323563489" duration="287000" />
       <workItem from="1585326411971" duration="595000" />
-      <workItem from="1585553836866" duration="10945000" />
+      <workItem from="1585553836866" duration="15981000" />
+      <workItem from="1585642914264" duration="3550000" />
     </task>
     <task id="LOCAL-00001" summary="Ajout formAuthor">
       <created>1585571048528</created>
@@ -132,18 +137,19 @@
     <option name="LAST_COMMIT_MESSAGE" value="Ajout formAuthor" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="585" y="74" key="CommitChangelistDialog2" timestamp="1585571048077">
+    <state x="585" y="74" key="CommitChangelistDialog2" timestamp="1585572854646">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state x="585" y="74" key="CommitChangelistDialog2/1440.-157.1600.877/0.23.1440.877@0.23.1440.877" timestamp="1585571048077" />
+    <state x="585" y="74" key="CommitChangelistDialog2/1440.-157.1600.877/0.23.1440.877@0.23.1440.877" timestamp="1585572854646" />
     <state x="223" y="203" key="Vcs.Push.Dialog.v2" timestamp="1585571052352">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="223" y="203" key="Vcs.Push.Dialog.v2/1440.-157.1600.877/0.23.1440.877@0.23.1440.877" timestamp="1585571052352" />
-    <state x="768" y="294" key="com.intellij.ide.util.TipDialog" timestamp="1585553848508">
+    <state x="768" y="294" key="com.intellij.ide.util.TipDialog" timestamp="1585642914233">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="768" y="294" key="com.intellij.ide.util.TipDialog/0.23.1440.877@0.23.1440.877" timestamp="1585553848508" />
+    <state x="768" y="294" key="com.intellij.ide.util.TipDialog/1440.-157.1600.877/0.23.1440.877@0.23.1440.877" timestamp="1585642914233" />
     <state x="395" y="82" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1585572689527">
       <screen x="0" y="23" width="1440" height="877" />
     </state>

@@ -1,1 +1,41 @@
-{{ form(formAuthor) }}
+{% extends "base.html.twig" %}
+
+{% block section2 %}
+
+<div class="formAuthor">
+    {{ form_start(formAuthor) }}
+
+    {{ form_label(formAuthor.name) }}
+    <div class="inputName">
+        {{ form_widget(formAuthor.name) }}
+    </div>
+
+
+    {{ form_label(formAuthor.firstName) }}
+    <div class="inputFirstName">
+        {{ form_widget(formAuthor.firstName) }}
+    </div>
+
+    {{ form_label(formAuthor.birthDate) }}
+    <div class="inputBirthDate">
+        {{ form_widget(formAuthor.birthDate) }}
+    </div>
+
+    {{ form_label(formAuthor.deathDate) }}
+    <div class="inputDeathDate">
+        {{ form_widget(formAuthor.deathDate) }}
+    </div>
+
+    {{ form_label(formAuthor.biography) }}
+    <div class="inputBiography">
+        {{ form_widget(formAuthor.biography) }}
+    </div>
+
+    {{ form_widget(formAuthor.submit) }}
+
+
+
+    {{ form_end(formAuthor) }}
+</div>
+
+{% endblock %}
