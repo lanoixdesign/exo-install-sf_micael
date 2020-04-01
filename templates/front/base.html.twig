@@ -1,0 +1,29 @@
+
+
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    {% block heade %}
+        <meta charset="UTF-8">
+        <title>Title</title>
+
+        <link  type="text/css" rel="stylesheet" href="{{ asset('css/style.css') }}">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    {% endblock %}
+</head>
+<body>
+
+
+        {% block body %}
+
+        {% endblock %}
+
+
+</body>
+
+<footer>
+    {% block footer %}
+        <div> &copy; Copyright 2020 by <a href="#!">Micaël L.</a>.</div>
+    {% endblock %}
+</footer>
+</html>

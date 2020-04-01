@@ -45,6 +45,11 @@ class Book
      */
     private $author;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $CoverFilename;
+
 
 
     public function getId(): ?int
@@ -105,6 +110,18 @@ class Book
     public function setAuthor(?Author $author): self
     {
         $this->author = $author;
+
+        return $this;
+    }
+
+    public function getCoverFilename(): ?string
+    {
+        return $this->CoverFilename;
+    }
+
+    public function setCoverFilename(?string $CoverFilename): self
+    {
+        $this->CoverFilename = $CoverFilename;
 
         return $this;
     }

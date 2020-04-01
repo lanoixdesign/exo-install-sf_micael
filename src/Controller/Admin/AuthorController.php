@@ -55,6 +55,9 @@ class AuthorController extends AbstractController
 
         if ($formAuthor->isSubmitted() && $formAuthor->isValid()){
 
+            // j'affiche un mesage flash pour indiquer à l'utilisateur que l'action est validé
+            $this->addFlash('success', 'Le livre a bien été modifié');
+
             // je persiste le book
             $entityManager->persist($author);
             $entityManager->flush();
@@ -105,6 +108,9 @@ class AuthorController extends AbstractController
         $formAuthor->handleRequest($request);
 
         if ($formAuthor->isSubmitted() && $formAuthor->isValid()) {
+
+            // j'affiche un mesage flash pour indiquer à l'utilisateur que l'action est validé
+            $this->addFlash('success', 'Le livre a bien été modifié');
 
             // je persiste le book
             $entityManager->persist($author);
